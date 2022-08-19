@@ -1,0 +1,1592 @@
+font-set(size, color, line-height)
+  font size "bebas_neue_cyrillicregular"
+  color color
+  line-height line-height
+font-set-tmn(size, color)
+  font size 'Arial', sans-serif;
+  color color
+button(bg-size,padding-l,padding-r, bx-shadow, border-r)
+  background-size bg-size
+  color: #fff;
+  border: none;
+  border-radius: border-r;
+  box-shadow: 0 bx-shadow #b83229;
+  outline none
+  padding-left padding-l
+  padding-right padding-r
+init-animation(transitionProp, transitionTime, transitionFunction, transitionDelay)
+  opacity 0
+  transition transitionProp transitionTime transitionFunction
+  transition-delay transitionDelay
+p, h1, h2, h3
+  margin 0
+  padding 0
+body
+  margin 0
+  padding 0
+  .wrapper
+    position relative
+    height: 100vh;
+    .is_overlay
+      display:flex;
+      width: 100%;
+      position: absolute;
+      top: 0; right: 0;  left: 0; bottom: 0;
+      overflow: hidden;
+      align-items center
+      justify-content center
+      flex-direction column
+      video
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index -10
+      .backup-video1, .backup-video2
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom 0
+        right 0
+        z-index -15
+        width 100%
+        min-width 100%
+      .backup-video1
+        background: url(../images/screen1-bg.jpg) no-repeat 50% 50%;
+        background-size cover
+      .backup-video2
+        background: url(../images/screen2-bg.jpg) no-repeat 50% 50%;
+        background-size cover
+      .pattern
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        background: url(../images/pattern.png) repeat 0 0;
+        z-index 0
+      .deadline
+        position relative
+        width 100%
+        display flex
+        justify-content center
+        background-color rgba(0, 0, 0, 0.6)
+        init-animation(opacity, 0.3s, ease-in, 0s)
+        z-index 1000
+        .inner
+          padding 40px 0
+          text-align center
+          z-index 1000
+          .t1-1, .t1-2, .t1-3, .t1-4, .t1-5
+            width 500px
+            display block
+            z-index 1000
+          .t1-1
+            init-animation(opacity, 0.8s, ease-in-out, 0.45s)
+          .t1-4
+            init-animation(opacity, 0.8s, ease-in-out, 2s)
+            margin-top 10px
+          .t1-5
+            init-animation(opacity, 0.8s, ease-in-out, 2.3s)
+            margin-top 10px
+          .t1-2
+            opacity 0
+            transition transform 0.3s, opacity, 0.6s
+            transition-timing-function ease-in-out
+            transition-delay 1.45s
+            transform translateX(-25%)
+            margin: 15px 0 20px 0;
+          .t1-3
+            transform translateX(25%)
+            opacity 0
+            transition transform 0.3s, opacity, 0.6s
+            transition-timing-function ease-in-out
+            transition-delay 1.75s
+        &.is_animated
+          opacity 1
+          .inner
+            .t1-1, .t1-2, .t1-3, .t1-4, .t1-5
+              opacity 1
+              transform translateX(0)
+      .arrow, .scroll-icon
+        position absolute
+        left 50%
+        init-animation(opacity, 0.5s, ease-in-out, 2.75s)
+        z-index 1000
+        &.is_animated
+          opacity 1
+      .arrow
+        bottom 15%
+        transform translate(-50%, -10%)
+        animation scroll 1s infinite ease-in-out
+      .scroll-icon
+        bottom 4%
+        transform translateX(-50%)
+        cursor pointer
+      &.screen-1
+        button
+          &.main-button
+            position absolute
+            bottom 0
+            left 50%
+            &.is_animated
+              transform-origin 50% 50%
+              animation sc1-buttons 0.8s ease-in-out
+              animation-delay 2s
+              transform (translateX(-50%) scale(0))
+              animation-fill-mode forwards
+      &.screen-2
+        justify-content: space-between
+        .pattern
+          background: url(../images/pattern.png) repeat 0 0 rgba(0,0,0,0.35);
+        .header
+          width 800px
+          z-index 1000
+          margin-top 2%
+          margin-bottom: 0.5%;
+          opacity 0
+          transform translateY(25%)
+          transition: opacity 1s ease-out, transform 1.25s ease-out;
+          p
+            font-set(200px,white, 141px)
+            margin-right -5px
+          &.is_animated
+            opacity 1
+            transform translateY(0)
+            div
+              p:nth-child(1)
+                transform translateY(0)
+              p:nth-child(2)
+                transform translateY(0)
+            p
+              transform translateX(0)
+        .portfolio
+          z-index 1000
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+          .portfolio-preview
+            width 792px
+            z-index 1000
+            display flex
+            justify-content space-between
+            align-items center
+            font-size 0
+            margin-bottom 1%
+            div
+              width 120px
+              height 91px
+              figure
+                margin: 0;
+                width: 120px;
+                height: 91px;
+                padding: 0;
+                overflow: hidden;
+                font-size 0
+                cursor pointer
+                position relative
+                .overlay
+                  width 100%
+                  height 100%
+                  display block
+                  background rgba(0,0,0,0.6)
+                  position absolute
+                  left 0
+                  top 0
+                  transition: .3s ease-in-out;
+                img
+                  -webkit-transform: scale(1);
+                  transform: scale(1);
+                  -webkit-transition: .3s ease-in-out;
+                  transition: .3s ease-in-out;
+                  -webkit-filter: grayscale(1);
+                  filter: gray;
+                  filter: grayscale(1);
+                  width 100%
+                  font-size 0
+                &:hover
+                  img
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                    webkit-filter: grayscale(0);
+                    filter: grayscale(0);
+                    filter: none;
+                  .overlay
+                    background rgba(0,0,0,0)
+                &.is_active
+                  border 2px solid #ffffff
+                  box-sizing border-box
+                  .overlay
+                    background rgba(0,0,0,0)
+                  img
+                    webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                    webkit-filter: grayscale(0);
+                    filter: grayscale(0);
+                    filter: none;
+          .previewContainer
+            z-index 1000
+            overflow hidden
+            .banner
+              padding: 10px;
+              width: 240px;
+              z-index 1000
+              background-color rgba(0, 0, 0, 0.6)
+              display flex
+              .banner-info
+                h3
+                  font-set(40px,white, 29px)
+                  margin-bottom 10px
+                p
+                  color #ffffff
+                  font-family 'Arial', sans-serif;
+                  font-size 14px
+              &.active
+                display flex
+          &.is_animated
+            opacity 1
+        .mobile-controls
+          position absolute
+          top 0
+          bottom 0
+          z-index 1000
+          left 50%
+          transform translateX(-50%)
+          .fp-controlArrow
+            display none
+            opacity 0
+            init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+            &.is_animated
+              opacity 1
+      &.screen-3
+        background url("../images/screen3-bg.jpg") no-repeat 50% 50%
+        background-size cover
+        justify-content: space-between
+        .header
+          margin-top 2%
+          width 550px
+          opacity 0
+          transform translateY(25%)
+          transition: opacity 0.9s ease-out, transform 1.25s ease-out;
+        .slider-container
+          width: 644px;
+          overflow: hidden;
+          position relative
+          .mobile-controls
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width 644px
+            z-index 15
+          .clients
+            z-index 10
+            display: flex;
+            justify-content space-between
+            width: 1932px;
+            position relative
+            init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+            .column
+              width: 644px;
+              text-align center
+              img
+                width 25%
+                margin-bottom 10px
+              p
+                font-set-tmn(20px,white)
+                text-align center
+                line-height 19px
+                &.quote
+                  padding 0 5px
+                  font-set-tmn(18px,white)
+                  text-align center
+                  margin-bottom 15px
+                  &:after, &:before
+                    content ""
+                    position absolute
+                    width 25px
+                    height 19px
+                    background url("../images/blockquote.png") no-repeat 0 0
+                  &:before
+                    transform rotate(180deg)
+                    top -32px
+                    left 0
+                  &:after
+                    bottom -19px
+                    right 0
+        &.is_animated
+          .header
+            transform translateY(0);
+            opacity 1
+          .clients
+            opacity 1
+      &.screen-4
+        background url("../images/screen4-bg.jpg") no-repeat 50% 50%
+        background-size cover
+        justify-content: space-between
+        .header
+          width 900px
+          opacity 0
+          transform translateY(25%)
+          transition: opacity 0.9s ease-out, transform 1.25s ease-out;
+          margin 25px 0 0 0
+        .wrap
+          .dopcoast
+            display flex
+            width 900px
+            justify-content space-between
+            init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+            .column
+              width 52%
+              h3
+                font-set(45px,white, 39px)
+                margin-bottom 10px
+              p
+                font-set-tmn(20px, #ffffff)
+                line-height 25px
+            &:nth-child(1)
+              margin-bottom 25px
+            .column:nth-child(even)
+              width 39%
+        .email
+          font-set-tmn(55px, #ffffff)
+          text-decoration none
+          position relative
+          margin-bottom 15px
+          init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+          &:after
+            content ""
+            position absolute
+            bottom 0
+            right 0
+            width 100%
+            border-top 2px solid #ffffff
+        &.is_animated
+          .header
+            opacity 1
+            transform translateY(0)
+          .dopcoast
+            opacity 1
+          .email
+            opacity 1
+  .logo
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index 1000
+  button
+    &.main-button
+      background: url("../images/fire-man.png") no-repeat 0% 0%, #f44236;
+      button(80px, 100px, 24px, 10px, 15px)
+      font-set(50px,white, 70px)
+      opacity 0
+      margin-bottom 1%
+      z-index 1000
+      padding-top 3px
+      &.is_animated
+        transform-origin 50% 50%
+        animation buttons 0.8s ease-in-out
+        animation-delay 1s
+        transform scale(0)
+        animation-fill-mode forwards
+  a
+    &.phone-button
+      background: url("../images/phone.png") no-repeat 5% 50%, #f44236;
+      button(95px, 150px, 23px, 10px, 15px)
+      font-set(95px,white, 120px)
+      text-decoration none
+      opacity 0
+      z-index 1000
+      padding-top 4px
+      &.is_animated
+        transform-origin 50% 50%
+        animation buttons 0.8s ease-in-out
+        animation-delay 1s
+        transform scale(0)
+        animation-fill-mode forwards
+    span
+      font-family Arial
+  button, a
+    &.main-button:hover,&.phone-button:hover
+      background-color: #e23e32
+      cursor pointer
+      border none
+  button, a
+    &.main-button:active, &.phone-button:active
+      outline none
+      border none
+      background-color: #f44236;
+      box-shadow: 0 5px #b83229;
+      transform translateY(5px)
+  .popup-pattern
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.95);
+    overflow:hidden;
+    position:fixed;
+    top:0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index 10000
+    button
+    &.main-button
+      button(80px, 10px, 24px, 10px, 15px)
+    .close
+      position absolute
+      right 15px
+      top 15px
+      z-index 10001
+      width 50px
+    .close-area
+      position absolute
+      left 0
+      top 0
+      right 0
+      bottom 0
+      z-index 10002
+    .popup
+      z-index 10002
+      width 37%
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction column
+      position relative
+      h2
+        font-set(7vw,white, 5.5vw)
+        margin-bottom 1%
+      form
+        width 100%
+        text-align center
+        input[type="email"], input[type="text"], input[type="tel"]
+          border-radius: 40px;
+          box-shadow: none;
+          border: none;
+          outline: none;
+          font-size 20px
+          padding: 10px 10% 10px 20px;
+          &.error
+            box-shadow: inset 0px 0px 0px 5px #f86556;
+            background #ffffff url(../images/eror.svg) no-repeat 96% 50%
+            background-size: auto 58%;
+        textarea
+          min-height: 21vh;
+          border-radius: 40px;
+          box-shadow: none;
+          border: none;
+          outline: none;
+          padding: 3%;
+          width: 94%;
+          font-size: 1.5vw
+          resize: none;
+          border-bottom-right-radius 0
+          border-bottom-left-radius 0
+          vertical-align: top;
+        .bottom-pannel
+          width 100%
+          height 10%
+          background #ea3f2e
+          border-bottom-right-radius 40px
+          border-bottom-left-radius 40px
+          padding: 2% 4%;
+          box-sizing border-box
+          label, span
+            font-set(1vw, white, 2.2vw)
+          .file-upload
+            position: relative;
+            overflow: hidden;
+            width:60%
+            text-align: center;
+            padding 0
+            margin 0
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            input[type="file"]
+              display: none;
+            label
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: auto
+              height: 100%;
+              cursor: pointer;
+              margin 0
+            img
+              height: 100%;
+            span
+              margin-left: 15%;
+              text-align left
+        .message
+          display none
+        .phone-container
+          position relative
+          width: 40%;
+          label
+            position absolute
+            left -4%
+            top 50%
+            transform translate(-100%, -50%)
+        div
+          display flex
+          justify-content space-between
+          margin-bottom 40px
+          div
+            display flex
+            flex-direction column
+            width 100%
+            margin-bottom 0
+            label
+              font-set(38px,white, 38px)
+              display block
+              text-align left
+              margin-bottom 5px
+            &:nth-child(1)
+              padding-right 20px
+        .main-button
+          width 100%
+          opacity 1
+          padding-top 7px
+        .response
+          padding 10px
+          display none
+          opacity 0.9
+          border-radius 5px
+          margin: 10px auto 0 auto;
+          width: 57%;
+          padding-left: 7%;
+          font-set-tmn(14px, #ffffff)
+          text-align center
+          &.sucsess
+            background #739b47 url(../images/check.svg) no-repeat 5% 50%
+            background-size: auto 58%;
+          &.error
+            background #a52d25  url(../images/eror.svg) no-repeat 5% 50%
+            background-size: auto 58%;
+  .mobile-banner
+    z-index 1000
+    position absolute
+    transform-origin: 50% 50%;
+    top 50%
+    left 50%
+    display none
+    opacity 0
+    init-animation(opacity, 0.5s, ease-in-out, 0.75s)
+    &.is_animated
+      opacity 1
+  .fp-controlArrow
+    top 34%
+    border none
+    height: 60px;
+    width: 60px;
+    z-index 1000
+    &.fp-prev
+      height: 60px;
+      width: 60px;
+      background: url(../images/scroll-arrow-to-left.svg) no-repeat 0 0;
+      background-size: cover;
+      left -14px
+    &.fp-next
+      height: 60px;
+      width: 60px;
+      background: url(../images/scroll-arrow-to-right.svg) no-repeat 0 0;
+      background-size: cover;
+      right -14px
+@keyframes scroll
+  0%
+    transform translate(-50%, -20%)
+  50%
+    transform translate(-50%, 0)
+  100%
+    transform translate(-50%, -20%)
+@keyframes sc1-buttons
+  0%
+    transform (translateX(-50%) scale(0))
+    opacity 0
+  60%
+    transform (translateX(-50%) scale(1.1))
+    opacity 1
+  100%
+    transform (translateX(-50%) scale(1))
+    opacity 1
+@keyframes buttons
+  0%
+    transform scale(0)
+    opacity 0
+  60%
+    transform scale(1.1)
+    opacity 1
+  100%
+    transform scale(1)
+    opacity 1
+@media (min-aspect-ratio: 16/9)
+  body
+    .wrapper
+      .is_overlay
+        video
+          height: 300%;
+          top: -100%;
+@media (max-aspect-ratio: 16/9)
+  body
+    .wrapper
+      .is_overlay
+        video
+          width: 300%;
+          left: -100%;
+@supports (object-fit: cover)
+  body
+    .wrapper
+      .is_overlay
+        video
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+@media (max-width: 767px)
+  body
+    .wrapper
+      .is_overlay
+        .previewContainer
+          .banner
+            display none
+    .popup-pattern
+      .popup
+        form
+          textarea
+            border-radius 15px
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            height 125px
+          .phone-container
+            margin 0
+            input[type="tel"]
+              font-size: 14px;
+              padding: 5px 5% 5px 5px;
+          .bottom-pannel
+            flex-direction row
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            label, span
+              font: 2vw "bebas_neue_cyrillicregular";
+            .file-upload
+              span
+                margin-left 27%
+@media (max-width: 1240px)
+  body
+    .wrapper
+      .is_overlay
+        .arrow
+          display none
+        .scroll-icon
+          display none
+        &.screen-3
+          .slider-container
+            .clients
+              .column
+                p
+                  text-align center
+                  &.quote
+                    text-align center
+                  &:before, &:after
+                    display none
+        &.screen-4
+          .wrap
+            .dopcoast
+              flex-direction: column;
+              margin-bottom 0
+@media (max-width: 374px) and (orientation: portrait)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-1
+          button
+            &.main-button
+              width 178px
+          .deadline
+          .inner
+            padding 10px 0
+            .t1-1, .t1-2, .t1-3, .t1-4, .t1-5
+              width 220px
+            .t1-2
+              margin: 4px 0 6px 0;
+            .t1-4
+              margin-top 3px
+            .t1-5
+              margin-top 4px
+        &.screen-2
+          .portfolio
+            display none
+          .mobile-banner
+            display: block
+          .header
+            width 290px
+          .mobile-controls
+            width 290px
+            .fp-controlArrow
+              display block
+              top 50%
+              &.fp-prev
+                left -10px
+              &.fp-next
+                right -10px
+        &.screen-3
+          .header
+            margin-top: 15px;
+            margin-bottom: 5px;
+            width 290px
+          .slider-container
+            width: 290px;
+            overflow: hidden;
+            .mobile-controls
+              width 290px
+              display block
+            .clients
+              width: 870px;
+              .column
+                width: 290px;
+                p
+                  font-set-tmn(12px,white)
+                  line-height 19px
+                  font-style italic
+                  &.quote
+                    font-set-tmn(12px,white)
+                    line-height 13px
+                    margin-bottom 0
+                    padding 0
+                img
+                  width 32%
+                  margin-bottom 5px
+        &.screen-4
+          .header
+            width 290px
+            margin-top 15px
+          .wrap
+            .dopcoast
+              width: 290px;
+              .column
+                width: 100%;
+                margin-bottom: 10px;
+                h3
+                  font-set(16px,white, 16px)
+                  margin-bottom 0
+                p
+                  font-set-tmn(12px,white)
+                  line-height 11px
+                &:nth-child(even)
+                  width 100%
+              &:nth-child(1)
+                margin-bottom 0
+                .column
+                  &:nth-child(1)
+                    margin-bottom 2%
+                  &:nth-child(2)
+                    margin-bottom 2%
+              &:nth-child(2)
+                margin-bottom 0
+                .column
+                  &:nth-child(1)
+                    margin-bottom 2%
+          .email
+            font-set-tmn(21px,white, 14px)
+            margin-bottom 15px
+    .logo
+      width 30px
+    .popup-pattern
+      .close
+        right: 10px;
+        top: 10px;
+        width: 26px;
+      .popup
+        margin: 15px 0 0 0
+        width 242px
+        h2
+          font-set(46px,#ffffff, 36px)
+          margin-bottom 20px
+        form
+          textarea
+            height 50px
+            padding: 10px;
+            width: calc(100% - 20px);
+            font-size: 16px;
+          div
+            margin-bottom 5px
+            flex-direction column
+            div
+              margin-bottom 5px
+              flex-direction: column;
+              width: 100%;
+              label
+                font: 18px "bebas_neue_cyrillicregular";
+                line-height: 22px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 4px
+                font-size: 16px;
+                padding: 8px 10px;
+          button
+            &.main-button
+              padding-top 3px
+              button(50px, 39px, 0px, 4px, 8px)
+              font-set(33px,white, 40px)
+              margin-bottom 0
+          .response
+            font-size 8px
+            padding 5px
+            margin: 10px auto 0 auto;
+            width: 242px;
+            padding-left: 20px;
+            box-sizing border-box
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(47px, 55px, 12px, 4px, 8px)
+        font-set(20px,white, 40px)
+        margin-bottom: 15px;
+        padding-top 3px
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(21px, 45px, 25px, 4px, 8px)
+        font-set(18px,white, 30px)
+        margin-bottom: 0
+        padding-top 3px
+    .fp-controlArrow
+      top 29%
+      &.fp-prev
+        height: 40px;
+        width: 40px;
+        left: -8px;
+      &.fp-next
+        height: 40px;
+        width: 40px;
+        right -8px;
+@media (min-width: 375px) and (max-width: 468px) and (orientation: portrait)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-1
+          button
+            &.main-button
+              width 221px
+        .deadline
+          .inner
+            padding 15px 0
+            .t1-1, .t1-2, .t1-3,.t1-4, .t1-5
+              width 320px
+            .t1-2
+              margin: 5px 0 10px 0;
+            .t1-4
+              margin-top 5px
+            .t1-5
+              margin-top 5px
+        &.screen-2
+          .portfolio
+            display none
+          .mobile-banner
+            display: block
+          .header
+            width 344px
+          .mobile-controls
+            width 344px
+            .fp-controlArrow
+              display block
+              top 50%
+              &.fp-prev
+                left -10px
+              &.fp-next
+                right -10px
+        &.screen-3
+          .header
+            margin-top: 15px;
+            margin-bottom: 5px;
+            width 344px
+          .slider-container
+            width: 344px;
+            overflow: hidden;
+            .mobile-controls
+              width 344px
+              display block
+            .clients
+              width: 1032px;
+              .column
+                width: 344px;
+                p
+                  font-set-tmn(16px,white)
+                  line-height 19px
+                  font-style italic
+                  &.quote
+                    font-set-tmn(14px,white)
+                    line-height 16px
+                    margin-bottom 15px
+                    padding 0
+                img
+                  width 40%
+                  margin-bottom 25px
+        &.screen-4
+          .header
+            margin-top: 15px;
+            width 344px
+          .wrap
+            .dopcoast
+              width: 344px;
+              .column
+                width: 100%;
+                margin-bottom: 10px;
+                h3
+                  font-set(22px,white, 22px)
+                  margin-bottom 0
+                p
+                  font-set-tmn(14px,white)
+                &:nth-child(even)
+                  width 100%
+              &:nth-child(1)
+                margin-bottom 0
+          .email
+            font-set-tmn(21px,white, 14px)
+            margin-bottom 15px
+    .logo
+      width 50px
+      right 15px
+    .popup-pattern
+      .close
+        right: 10px;
+        top: 10px;
+        width: 29px;
+      .popup
+        width 290px
+        h2
+          font-set(55px,#ffffff, 52px)
+          margin-bottom: 10px;
+          margin-top: 0
+        form
+          div
+            flex-direction column
+            margin-bottom 15px
+            div
+              margin-bottom 10px
+              flex-direction: column;
+              width: 100%;
+              label
+                font: 28px "bebas_neue_cyrillicregular";
+                line-height: 36px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 8px
+          .response
+            font-size: 12px;
+            padding: 5px;
+            margin: 10px auto 0 auto;
+            width: 290px;
+            box-sizing: border-box;
+            padding-left: 39px;
+      button
+        &.main-button
+          button(57px, 20px, 17px, 6px, 8px)
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(50px, 65px, 17px, 6px, 8px)
+        font-set(25px,white, 47px)
+        margin-bottom: 16px;
+        padding-top 3px
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(27px, 45px, 25px, 6px, 8px)
+        font-set(18px,white, 36px)
+        margin-bottom: 0
+        padding-top 3px
+    .fp-controlArrow
+      top 29%
+      &.fp-prev
+        height: 50px;
+        width: 50px;
+        left: -8px;
+      &.fp-next
+        height: 50px;
+        width: 50px;
+        right -8px;
+@media (min-width: 469px) and (max-width: 767px) and (orientation: portrait)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-1
+          button
+            &.main-button
+              width 280px
+        .deadline
+          .inner
+            padding 15px 0
+            .t1-1, .t1-2, .t1-3,.t1-4, .t1-5
+              width 390px
+            .t1-2
+              margin: 5px 0 10px 0;
+            .t1-4
+              margin-top 5px
+            .t1-5
+              margin-top 7px
+        &.screen-2
+          .header
+            margin-top 20px
+            width 437px
+          .portfolio
+            display none
+          .mobile-banner
+            display: block
+          .mobile-controls
+            width 437px
+            .fp-controlArrow
+              display block
+              top 50%
+              &.fp-prev
+                left -10px
+              &.fp-next
+                right -10px
+        &.screen-3
+          .header
+            margin-top 20px
+            width 437px
+          .slider-container
+            width: 437px;
+            overflow: hidden;
+            .mobile-controls
+              width 437px
+              display block
+            .clients
+              width: 1311px;
+              .column
+                width: 437px;
+              img
+                width 40%
+              p
+                font-set-tmn(22px,white)
+                &.quote
+                  padding 0 5px
+                  font-set-tmn(20px,white)
+                  margin-bottom 15px
+        &.screen-4
+          .header
+            margin-top 20px
+            width 437px
+          .wrap
+            .dopcoast
+              width: 437px;
+              flex-grow 0.1
+              .column
+                width: 100%;
+                margin-bottom: 10px;
+                h3
+                  font-set(30px,white, 26px)
+                  margin-bottom 0
+                p
+                  font-set-tmn(18px,white)
+                &:nth-child(even)
+                  width 100%
+              &:nth-child(1)
+                margin-bottom 0
+          .email
+            font-set-tmn(28px,white, 20px)
+            margin-bottom 18px
+    .logo
+      width 50px
+      right 20px
+      bottom 20px
+    .popup-pattern
+      .close
+        right: 15px;
+        top: 15px;
+        width: 33px;
+      .popup
+        width 436px
+        h2
+          font-set(70px,#ffffff, 80px)
+          margin-bottom 15px
+        form
+          textarea
+            height 170px
+            border-radius 8px
+          div
+            flex-direction column
+            margin-bottom 10px
+            div
+              margin-bottom 10px
+              flex-direction: column;
+              width: 100%;
+              label
+                font: 35px "bebas_neue_cyrillicregular";
+                line-height: 42px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 8px
+          .response
+            font-size: 14px;
+            padding: 10px;
+            margin: 10px auto 0 auto;
+            width: 436px;
+            box-sizing: border-box;
+            padding-left: 45px;
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(48px, 65px, 20px, 6px, 8px)
+        font-set(35px,white, 44px)
+        margin-bottom: 25px;
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(38px, 60px, 20px, 6px, 8px)
+        font-set(26px,white, 49px)
+        margin-bottom: -3%
+    .fp-controlArrow
+      top 25%
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-1
+          button
+            &.main-button
+              width 436px
+        &.screen-2
+          .header
+            margin-top 25px
+            width 644px
+          .portfolio
+            .portfolio-preview
+              width 650px
+              div
+                width: 100px;
+                height: 75px;
+                figure
+                  width: 100px;
+                  height: 75px;
+            .previewContainer
+              .banner
+                display flex
+                width 240px
+        &.screen-3
+          .header
+            width 644px
+          .slider-container
+            width: 570px;
+            overflow: hidden;
+            .mobile-controls
+              width 570px
+              display block
+            .clients
+              width: 1710px;
+              .column
+                width: 570px;
+                img
+                  width 43%
+                p
+                  font-set-tmn(26px,white)
+                  &.quote
+                    padding 0 5px
+                    font-set-tmn(24px,white)
+                  margin-bottom 15px
+        &.screen-4
+          .header
+            width 644px
+          .wrap
+            .dopcoast
+              width: 644px;
+              flex-grow 0.1
+              .column
+                width: 100%;
+                margin-bottom: 25px;
+                h3
+                  margin-bottom 0
+                  font-set(40px,white, 35px)
+                p
+                &:nth-child(even)
+                  width 100%
+              &:nth-child(1)
+                margin-bottom 0
+          .email
+            margin-bottom 25px
+    .logo
+      width 80px
+      right 25px
+      bottom 25px
+    .popup-pattern
+      .popup
+        width 644px
+        h2
+          font-set(100px,#ffffff, 110px)
+        form
+          .bottom-pannel
+            flex-direction row
+            label, span
+              font: 2vw "bebas_neue_cyrillicregular";
+            .phone-container
+              margin 0
+          textarea
+            height 300px
+          div
+            flex-direction column
+            margin-bottom 1%
+            div
+              margin-bottom 10px
+              flex-direction: column;
+              width: 100%;
+              label
+                font: 45px "bebas_neue_cyrillicregular";
+                line-height: 55px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 8px
+                padding 20px
+          button
+            &.main-button
+              button(90px, 45px, 30px, 6px, 8px)
+              font-set(55px,white, 80px)
+              margin-bottom: 10px;
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(78px, 100px, 30px, 6px, 8px)
+        font-set(55px,white, 73px)
+        margin-bottom: 31px;
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(71px, 115px, 45px, 6px, 8px)
+        font-set(50px,white, 89px)
+        margin-bottom: 0
+    .fp-controlArrow
+      top 29%
+@media (min-width: 1024px) and (max-width: 1240px) and (orientation: portrait)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-1
+          button
+            &.main-button
+              width 531px
+        &.screen-2
+          .header
+            margin-top 50px
+          .portfolio
+            .portfolio-preview
+              margin-bottom 10%
+        &.screen-3
+          .header
+            width 644px
+          .slider-container
+            width: 644px;
+            overflow: hidden;
+            .mobile-controls
+              width 644px
+              display block
+            .clients
+              width: 1932px;
+              .column
+                width: 644px;
+                img
+                  width 50%
+                p
+                  font-set-tmn(34px,white)
+                  margin-bottom 30px
+                  &.quote
+                    padding 0 5px
+                    font-set-tmn(32px,white)
+                    margin-bottom 15px
+        &.screen-4
+          .header
+            width 644px
+          .wrap
+            .dopcoast
+              width: 644px;
+              flex-grow 0.1
+              .column
+                width: 100%;
+                margin-bottom: 10px;
+                h3
+                  margin-bottom 0
+                  font-set(48px,white, 58px)
+                p
+                  font-set-tmn(26px,white)
+                &:nth-child(even)
+                  width 100%
+              &:nth-child(even)
+                margin-bottom 0
+          .email
+            margin-bottom 50px
+    .logo
+      width 100px
+      right 50px
+      bottom 50px
+    .popup-pattern
+      .popup
+        width 644px
+        h2
+          font-set(100px,#ffffff, 110px)
+        form
+          .phone-container
+            margin 0
+          .bottom-pannel
+            flex-direction row
+            span, label
+              font: 2vw "bebas_neue_cyrillicregular";
+            .file-upload
+              span
+                margin-left 17%
+          textarea
+            height 300px
+          div
+            flex-direction column
+            div
+              margin-bottom 10px
+              flex-direction: column;
+              width: 100%;
+              label
+                font: 45px "bebas_neue_cyrillicregular";
+                line-height: 55px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 8px
+                padding 20px
+      button
+        &.main-button
+          button(90px, 60px, 30px, 6px, 8px)
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(100px, 120px, 50px, 6px, 8px)
+        font-set(65px,white, 94px)
+        margin-bottom: 55px;
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(71px, 120px, 45px, 6px, 8px)
+        font-set(50px,white, 89px)
+        margin-bottom: 0
+    .fp-controlArrow
+      top 21%
+      &.fp-prev
+        height: 80px;
+        width: 80px;
+      &.fp-next
+        height: 80px;
+        width: 80px;
+@media (max-width: 1400px) and (orientation: landscape)
+  body
+    .wrapper
+      .is_overlay
+        .deadline
+          .inner
+            .t1-1, .t1-2, .t1-3, .t1-4, .t1-5
+              width 400px
+            .t1-2
+              margin: 5px 0 10px 0;
+            .t1-4
+              margin-top 5px
+            .t1-5
+              margin-top 5px
+        &.screen-2
+          .header
+            width 570px
+          .previewContainer
+            .banner
+              .banner-info
+                h3
+                  font-set(35px,white, 27px)
+                p
+                  font-set-tmn(14px,white)
+        .deadline
+          .inner
+            padding 30px 0
+            p:nth-child(1)
+              font-set(111px,#ff9700, 87px)
+            p:nth-child(2)
+              font-set(59px,#ffffff, 44px)
+            p:nth-child(3)
+              font-set(179px,#ffffff, 135px)
+        &.screen-3
+          .header
+            width: 450px;
+            margin-bottom: 1%;
+            margin-top 1%
+          .slider-container
+            width: 644px;
+            overflow: hidden;
+            .mobile-controls
+              width 644px
+              display block
+            .clients
+              width: 1932px;
+              .column
+                width: 644px;
+                img
+                  width 25%
+                p
+                  font-set-tmn(20px,white)
+                  text-align center
+                  &.quote
+                    padding 0 5px
+                    font-set-tmn(18px,white)
+                    text-align center
+                    margin-bottom 15px
+                    &:before, &:after
+                      display none
+        &.screen-4
+          .header
+            width 500px
+          .wrap
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            .dopcoast
+              width: 425px;
+              flex-direction: column;
+              .column
+                width 100%
+                margin-bottom 20px
+              .column:nth-child(even), .column:nth-child(2)
+                width 100%
+              .column
+                h3
+                  margin-bottom 0
+                  font-set(32px,white, 34px)
+                p
+                  font-set-tmn(20px,white)
+                  line-height 22px
+          .email
+            font-set-tmn(45px,white)
+            margin-bottom 15px
+    .logo
+      width 80px
+      right 15px
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(78px, 100px, 30px, 6px, 8px)
+        font-set(55px,white, 73px)
+        margin-bottom: 20px;
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(50px, 87px, 33px, 6px, 8px)
+        font-set(44px,white, 65px)
+        margin-bottom: 0;
+    .fp-controlArrow
+      top 23%
+    .popup-pattern
+      .popup
+        width 520px
+        h2
+          font-set(70px,#ffffff, 80px)
+        form
+          textarea
+            height 150px
+          .bottom-pannel
+            span, label
+              font: 1.5vw "bebas_neue_cyrillicregular";
+            .file-upload
+              span
+                margin-left: 20%;
+          div
+            div
+              margin-bottom 0
+              flex-direction: column;
+              width: 250px
+              label
+                font: 35px "bebas_neue_cyrillicregular";
+                line-height: 45px;
+                margin-bottom: 0;
+              input[type="text"], input[type="email"]
+                border-radius 8px
+                padding 20px
+      button
+        &.main-button
+          button(90px, 45px, 30px, 6px, 8px)
+@media (max-width: 1400px) and (min-height: 650px) and (orientation: landscape)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-2
+          .portfolio
+            flex-direction: row;
+            align-items: flex-start;
+            width: 350px;
+            justify-content: space-between;
+            .portfolio-preview
+              width: 80px;
+              justify-content: space-between;
+              flex-direction: column;
+              height 420px
+              margin-bottom 0
+              div
+                width 80px
+                height 61px
+                figure
+                  width: 80px;
+                  height: 61px;
+            .previewContainer
+              .banner
+                padding 10px
+                flex-direction: row-reverse;
+                width 240px
+@media (max-width: 1366px) and (max-height: 649px) and (orientation: landscape)
+  body
+    .wrapper
+      .is_overlay
+        &.screen-2
+          .header
+            margin-top 15px
+          .portfolio
+            display none
+          .mobile-controls
+            width 570px
+            display block
+            .fp-controlArrow
+              display block
+              top 48%
+        &.screen-3
+          .clients
+            .column
+              img
+                width 22%
+              p
+                font-set-tmn(18px,white)
+                text-align center
+                &.quote
+                  padding 0 5px
+                  font-set-tmn(17px,white)
+                  text-align center
+                  margin-bottom 10px
+                  &:before, &:after
+                    display none
+        &.screen-4
+          .wrap
+            min-height 400px
+          .email
+            font-set-tmn(35px,white)
+      .mobile-banner
+        display block
+        margin-top 2%
+    button
+      &.main-button
+        background: url(../images/fire-man.png) no-repeat 0% 0%, #f44236;
+        button(55px, 80px, 28px, 6px, 8px)
+        font-set(33px,white, 50px)
+        margin-bottom: 20px;
+    a
+      &.phone-button
+        background: url(../images/phone.png) no-repeat 3% 42%, #f44236;
+        button(43px, 60px, 20px, 6px, 8px)
+        font-set(35px,white, 55px)
+        margin-bottom: 5px;
+    .logo
+      width 50px
+      right 15px

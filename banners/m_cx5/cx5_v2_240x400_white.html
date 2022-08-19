@@ -1,0 +1,115 @@
+
+<script type="text/javascript" src="https://awaps.yandex.net/data/lib/adsdk.js"></script>
+<meta name="ad.size" content="width=240,height=400">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta charset="UTF-8">
+<title>cx5_v2_240x400_white</title>
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="cx5_v2_240x400_white.js"></script>
+<script>
+function getUrlParam(name) { 
+name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+results = regex.exec(location.search);
+return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+} 
+</script>
+<script>
+var canvas, stage, exportRoot, border;
+function init() {
+	border = new createjs.Shape();
+	border.snapToPixel = true;
+	border.x = border.y = .5;
+	border.graphics.beginStroke("#000");
+	border.graphics.setStrokeStyle(1);
+	border.graphics.drawRect(0, 0, 240 - 1, 400 - 1);
+	canvas = document.getElementById("canvas");
+	createjs.MotionGuidePlugin.install();
+	images = images||{};
+	ss = ss||{};
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest([
+		{src:"cx5_v2_240x400_white_atlas_.png", id:"cx5_v2_240x400_white_atlas_"}
+	]);
+}
+function handleFileLoad(evt) {	
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.cx5_v2_240x400_white();
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.enableMouseOver();	
+	exportRoot.addChild(border);
+	//Registers the "tick" event listener.
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);	    
+	//Code to support hidpi screens and responsive scaling.
+	(function(isResp, respDim, isScale, scaleType) {		
+		var lastW, lastH, lastS=1;		
+		window.addEventListener('resize', resizeCanvas);		
+		resizeCanvas();		
+		function resizeCanvas() {			
+			var w = lib.properties.width, h = lib.properties.height;			
+			var iw = window.innerWidth, ih=window.innerHeight;			
+			var pRatio = window.devicePixelRatio, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
+			if(isResp) {                
+				if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
+					sRatio = lastS;                
+				}				
+				else if(!isScale) {					
+					if(iw<w || ih<h)						
+						sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==1) {					
+					sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==2) {					
+					sRatio = Math.max(xRatio, yRatio);				
+				}			
+			}			
+			canvas.width = w*pRatio*sRatio;			
+			canvas.height = h*pRatio*sRatio;
+			canvas.style.width = w*sRatio+'px';			
+			canvas.style.height = h*sRatio+'px';
+			stage.scaleX = pRatio*sRatio;			
+			stage.scaleY = pRatio*sRatio;			
+			lastW = iw; lastH = ih; lastS = sRatio;		
+		}
+	})(false,'both',false,2);	
+}
+function Exit() {
+	var exitURL = getUrlParam('link1');
+	window.open(exitURL, "_blank");
+}
+function AddExit(button) {
+	button.addEventListener("mousedown", function (evt) {
+		if (evt.nativeEvent.button == 0) {
+			Exit();
+		}
+	});
+}
+function AddFont(fontName, fontURL, fontWeight, fontStyle) {
+	var newStyle = document.createElement('style');
+	newStyle.appendChild(document.createTextNode("\
+	@font-face {\
+		font-family: '"+fontName+"';\
+		src: local('☺'), url('"+fontURL+"') format('woff');\
+		font-weight: "+fontWeight+";\
+		font-style: "+fontStyle+";\
+	}\
+	"));
+	document.head.appendChild(newStyle);
+}
+</script>
+<body onload="init();" style="margin:0px;">
+	<canvas id="canvas" width="240" height="400" style="display: block; background-color:rgba(255, 255, 255, 1.00)"></canvas>
+</body>
